@@ -20,6 +20,7 @@
 
                 <label for="nombre"><h6>Nombre:</h6></label>
                 <select id="nombre" name="id" class="form-control" required>
+                    <option value="">--Seleccionar--</option>
                     <option value="1">Damian</option>
                     <option value="2">Julia(mama)</option>
                     <option value="3">Alberto</option>
@@ -29,12 +30,14 @@
 
                 <label for="tipoMov"><h6>Tipo de movimiento:</h6></label>
                 <select id="tipoMov"  name="tipoMov" class="form-control" required>
+                    <option value="">--Seleccionar--</option>
                     <option value="ingreso">Ingreso</option>
                     <option value="egreso">Egreso</option>                           
                 </select>
 
                 <label for="FormaPago"><h6>Forma de pago:</h6></label>
                 <select id="FormaPago" name="formaPago" class="form-control" required>
+                    <option value="">--Seleccionar--</option>
                     <option value="efectivo">Efectivo</option>
                     <option value="tarjetaCredito">Tarjeta Credito</option>
                     <option value="transferencia">Transferencia</option>
@@ -70,7 +73,7 @@
                         <th>Monto($)</th>
                         <th>Forma pago</th>
                         <th>Responsable</th>
-                        <th class="col-2">Accion</th>
+                        <th class="col-3">Accion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -98,16 +101,19 @@
                             <td><?php echo $row['forma_de_pago'] ?> </td>
                             <td><?php echo $row['responsable'] ?> </td>
                             <td>
-                                <a href="edit.php?id=<?php echo $row['tipo']?>">
+                                <a href="view.php?id_movimiento=<?php echo $row['id_movimiento']?>"class="me-3 btn btn-secondary" >
                                 <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="delete_task.php?id=<?php echo $row['responsable']?>">
+
+                                <a href="edit.php?id_movimiento=<?php echo $row['id_movimiento']?>"class="me-3 btn btn-secondary">
+                                <i class="fa-solid fa-pen"class="fa-solid fa-eye"></i>
+                                </a> 
+
+                                <a href="delete_task.php?id_movimiento=<?php echo $row['id_movimiento']?>"class="me-3 btn btn-danger">
                                 <i class="fa-solid fa-trash"></i>
                                 </a>
-                                <a href="view.php?id=<?php echo $row['responsable']?>">
-                                <i class="fa-solid fa-pen"></i>
+                                
                                 </a>
-                        </td>
+                            </td>
                         </tr>
                     <?php } ?>
                 </tbody>

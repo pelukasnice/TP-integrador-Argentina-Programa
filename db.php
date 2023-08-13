@@ -10,10 +10,10 @@ $conn = mysqli_connect(
 );
 
 
-if ($conn) {
+/*if ($conn) {
     echo "La base de datos está conectada.";
 } else {
     echo "Error en la conexión: " . mysqli_connect_error();
 }
 
-?>
+?>*/
