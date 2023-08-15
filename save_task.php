@@ -16,7 +16,7 @@ if (isset($_POST['save_task'])){
         die("Query Failed");
     }
 
-    $_SESSION['message'] = 'Movimiento guardado satisfactoriamente';
+    $_SESSION['message'] = 'Registro creado con éxito.';
     $_SESSION['message_type'] = 'success';
 
     header("Location: index.php");

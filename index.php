@@ -46,15 +46,15 @@
 
                     <h6>Monto:</h6>
                     <div class="form-group mb-3">
-                        <input type="text" name="monto" class="form-control">
+                        <input type="text" name="monto" class="form-control" required>
                     </div>
 
                     <h6>Descripcion:</h6>
                     <div class="form-group mb-3">
-                        <textarea name="descripcion" id="" rows="2" class="form-control"></textarea>
+                        <textarea name="descripcion" id="" rows="2" class="form-control" required></textarea>
                     </div>
 
-                    <input type="submit" class="btn btn-success btn-block" name="save_task" value="Guardar">
+                    <input type="submit" class="btn btn-success btn-block" name="save_task" value="Crear Registro">
 
                 </form>
 
@@ -68,48 +68,48 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Fecha</th>
+                            <th class="col-2">Fecha</th>
                             <th>Tipo</th>
                             <th>Descripcion</th>
                             <th>Monto($)</th>
                             <th>Forma pago</th>
                             <th>Responsable</th>
-                            <th class="col-3">Accion</th>
+                            <th class="col-4">Accion</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php 
                         $query = "SELECT 
                         m.id_mov AS id_movimiento,
-                        m.fecha,
+                        DATE_FORMAT(m.fecha, '%d - %m - %Y') AS fecha_format,
                         m.tipo,
                         m.descripcion,
                         m.monto,
                         m.forma_de_pago,
                         f.nombre AS responsable
                     FROM movimientos m
-                    JOIN familiares f ON m.id_familia = f.id_familia;
-                    ";
+                    JOIN familiares f ON m.id_familia = f.id_familia
+                    ORDER BY m.fecha DESC;";
                         $result_movimientos = mysqli_query($conn, $query);
 
                         while($row = mysqli_fetch_array($result_movimientos)){ ?>
                             <tr>
                                 <td><?php echo $row['id_movimiento'] ?> </td>
-                                <td><?php echo $row['fecha'] ?> </td>
+                                <td><?php echo $row['fecha_format'] ?> </td>
                                 <td><?php echo $row['tipo'] ?> </td>
                                 <td><?php echo $row['descripcion'] ?> </td>
                                 <td><?php echo $row['monto'] ?> </td>
                                 <td><?php echo $row['forma_de_pago'] ?> </td>
                                 <td><?php echo $row['responsable'] ?> </td>
                                 <td>
-                                    <a href="view.php?id_movimiento=<?php echo $row['id_movimiento']?>"class="me-3 btn btn-secondary" >
+                                    <a href="view.php?id_movimiento=<?php echo $row['id_movimiento']?>"class="me-3 btn btn-sm btn-secondary" >
                                     <i class="fa-solid fa-eye"></i>
 
-                                    <a href="edit.php?id_movimiento=<?php echo $row['id_movimiento']?>"class="me-3 btn btn-secondary">
+                                    <a href="edit.php?id_movimiento=<?php echo $row['id_movimiento']?>"class="me-3 btn btn-sm btn-secondary">
                                     <i class="fa-solid fa-pen"class="fa-solid fa-eye"></i>
                                     </a> 
 
-                                    <a href="delete_task.php?id_movimiento=<?php echo $row['id_movimiento']?>"class="me-3 btn btn-danger">
+                                    <a href="view_delete.php?id_movimiento=<?php echo $row['id_movimiento']?>"class="me-3 btn btn-sm btn-danger">
                                     <i class="fa-solid fa-trash"></i>
                                     </a>
                                     

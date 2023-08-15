@@ -14,7 +14,7 @@
 
 <nav class="navbar navbar-dark bg-dark">
     <div class="container">
-        <a href="index.php" class="navbar-brand">CONTROL DE GASTOS</a>
+        <a href="index.php" class="navbar-brand">ABM CONTROL DE GASTOS - TP INTEGRADOR - DIEGO OLGUIN</a>
     </div>
 </nav>
 

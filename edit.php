@@ -72,7 +72,7 @@ if (isset($_POST['update_task'])){
                     </div>
 
                     <input type="submit" class="btn btn-primary btn-block" name="update_task" value="Actualizar">
-
+                    <a href="index.php" class="btn btn-secondary btn-block">Atras</a>
                     </div>
                 </form>
             </div>

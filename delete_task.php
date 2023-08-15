@@ -11,7 +11,7 @@ if(isset($_GET['id_movimiento'])){
         die("Query failed: " . mysqli_error($conn)); // Muestra un mensaje de error si la consulta falla
     }
 
-    $_SESSION['message'] = 'Registro eliminado satisfactoriamente';
+    $_SESSION['message'] = 'Registro eliminado con éxito';
     $_SESSION['message_type'] = 'danger';
     
     header("Location: index.php"); // Redirige de nuevo a la página principal después de eliminar
