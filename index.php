@@ -63,61 +63,64 @@
         </div>
 
         <div class="col-md-8">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Fecha</th>
-                        <th>Tipo</th>
-                        <th>Descripcion</th>
-                        <th>Monto($)</th>
-                        <th>Forma pago</th>
-                        <th>Responsable</th>
-                        <th class="col-3">Accion</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php 
-                    $query = "SELECT 
-                    m.id_mov AS id_movimiento,
-                    m.fecha,
-                    m.tipo,
-                    m.descripcion,
-                    m.monto,
-                    m.forma_de_pago,
-                    f.nombre AS responsable
-                FROM movimientos m
-                JOIN familiares f ON m.id_familia = f.id_familia;
-                ";
-                    $result_movimientos = mysqli_query($conn, $query);
-
-                    while($row = mysqli_fetch_array($result_movimientos)){ ?>
+            <div class="table-responsive overflow-auto" style="max-height: 620px;">
+                <table class="table table-bordered">
+                    <thead>
                         <tr>
-                            <td><?php echo $row['id_movimiento'] ?> </td>
-                            <td><?php echo $row['fecha'] ?> </td>
-                            <td><?php echo $row['tipo'] ?> </td>
-                            <td><?php echo $row['descripcion'] ?> </td>
-                            <td><?php echo $row['monto'] ?> </td>
-                            <td><?php echo $row['forma_de_pago'] ?> </td>
-                            <td><?php echo $row['responsable'] ?> </td>
-                            <td>
-                                <a href="view.php?id_movimiento=<?php echo $row['id_movimiento']?>"class="me-3 btn btn-secondary" >
-                                <i class="fa-solid fa-eye"></i>
-
-                                <a href="edit.php?id_movimiento=<?php echo $row['id_movimiento']?>"class="me-3 btn btn-secondary">
-                                <i class="fa-solid fa-pen"class="fa-solid fa-eye"></i>
-                                </a> 
-
-                                <a href="delete_task.php?id_movimiento=<?php echo $row['id_movimiento']?>"class="me-3 btn btn-danger">
-                                <i class="fa-solid fa-trash"></i>
-                                </a>
-                                
-                                </a>
-                            </td>
+                            <th>#</th>
+                            <th>Fecha</th>
+                            <th>Tipo</th>
+                            <th>Descripcion</th>
+                            <th>Monto($)</th>
+                            <th>Forma pago</th>
+                            <th>Responsable</th>
+                            <th class="col-3">Accion</th>
                         </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        $query = "SELECT 
+                        m.id_mov AS id_movimiento,
+                        m.fecha,
+                        m.tipo,
+                        m.descripcion,
+                        m.monto,
+                        m.forma_de_pago,
+                        f.nombre AS responsable
+                    FROM movimientos m
+                    JOIN familiares f ON m.id_familia = f.id_familia;
+                    ";
+                        $result_movimientos = mysqli_query($conn, $query);
+
+                        while($row = mysqli_fetch_array($result_movimientos)){ ?>
+                            <tr>
+                                <td><?php echo $row['id_movimiento'] ?> </td>
+                                <td><?php echo $row['fecha'] ?> </td>
+                                <td><?php echo $row['tipo'] ?> </td>
+                                <td><?php echo $row['descripcion'] ?> </td>
+                                <td><?php echo $row['monto'] ?> </td>
+                                <td><?php echo $row['forma_de_pago'] ?> </td>
+                                <td><?php echo $row['responsable'] ?> </td>
+                                <td>
+                                    <a href="view.php?id_movimiento=<?php echo $row['id_movimiento']?>"class="me-3 btn btn-secondary" >
+                                    <i class="fa-solid fa-eye"></i>
+
+                                    <a href="edit.php?id_movimiento=<?php echo $row['id_movimiento']?>"class="me-3 btn btn-secondary">
+                                    <i class="fa-solid fa-pen"class="fa-solid fa-eye"></i>
+                                    </a> 
+
+                                    <a href="delete_task.php?id_movimiento=<?php echo $row['id_movimiento']?>"class="me-3 btn btn-danger">
+                                    <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                    
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            <div>
+                   
         </div>
     </div>
 
